@@ -6,7 +6,7 @@
         <div class='col-md-6 offset-md-3 col-xs-12'>
           <h1 class='text-xs-center'>Sign up</h1>
           <p class='text-xs-center'>
-            <router-link :to="{name:'login'}">Need an account?</router-link>
+            <router-link :to="{name:'login'}">Have an account?</router-link>
           </p>
           <rw-validation-errors v-if='validationErrors' :validation-errors='validationErrors' />
           <form @submit.prevent='onSubmit'>
@@ -66,13 +66,9 @@ export default {
           password: this.password
         }
       ).then(() => {
-        this.$router.push({name: 'home'})
+        this.$router.push({name: 'home'});
       })
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>

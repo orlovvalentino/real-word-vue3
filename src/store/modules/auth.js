@@ -36,6 +36,22 @@ const actions = {
           console.log(`error ${result}`);
         });
     })
+  },
+  login(context, credentionals){
+    return new Promise((resolve)=>{
+      context.commit('registerStart');
+      authApi
+        .login(credentionals)
+        .then(response =>{
+          context.commit('registerSuccess', response.data.user);
+          setItem('accessToken', response.data.user.token);
+          resolve(response.data.user);
+        })
+        .catch(result =>{
+          context.commit('registerFailure', result.response.data.errors);
+          console.log(`error ${result}`);
+        })
+    })
   }
 }
 export default {
